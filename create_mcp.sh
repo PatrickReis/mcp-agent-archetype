@@ -163,6 +163,11 @@ EOF
     cat > "$PROJECT_NAME/Makefile" << 'EOF'
 .PHONY: help install-dev test run create-agent
 
+env:
+	@echo "Criando ambiente virtual..."
+	python3 -m venv .venv
+	@echo "Ative o ambiente virtual com: source .venv/bin/activate"
+
 install-dev:
 	pip install -e .[dev]
 
@@ -170,11 +175,11 @@ test:
 	pytest tests/ -v
 
 run:
-	python -m src.examples.simple_agent
+	python3 -m src.examples.simple_agent
 
 create-agent:
 	@if [ -z "$(NAME)" ]; then echo "Erro: defina NAME. Ex: make create-agent NAME=meu_agente"; exit 1; fi
-	python scripts/create_agent.py --name $(NAME)
+	python3 scripts/create_agent.py --name $(NAME)
 EOF
 
     # README.md
