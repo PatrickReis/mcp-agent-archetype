@@ -136,8 +136,9 @@ cd meu-primeiro-agente
 
 ```bash
 # Criar ambiente virtual
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
+make env
+# python -m venv venv
+# source venv/bin/activate  # Linux/Mac
 # ou: venv\Scripts\activate  # Windows
 
 # Instalar dependências
@@ -160,6 +161,9 @@ pytest tests/ -v
 ```bash
 # Usar o gerador automático
 make create-agent NAME=processador_dados
+
+# Executar agente específico
+make run-agent NAME=processador_dados
 
 # Ou manualmente
 mkdir -p src/agents/meu_agente
